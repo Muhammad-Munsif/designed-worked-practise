@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern Responsive Website — Premium Template</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --success: #4cc9f0;
+      --dark: #0b132b;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+      --gradient-dark: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-accent);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+
+    p.lead {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 700px;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--gradient-dark);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .preloader-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+    }
+
+    .spinner {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 5px solid rgba(67, 97, 238, 0.2);
+      border-top-color: var(--primary);
+      animation: spin 1s linear infinite;
+      position: relative;
+    }
+
+    .spinner::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border-radius: 50%;
+      border: 5px solid rgba(247, 37, 133, 0.1);
+      animation: spinReverse 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spinReverse {
+      to { transform: rotate(-360deg); }
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 0.7rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .navbar-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: var(--transition);
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: var(--gradient-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-3px) rotate(15deg);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 0 80px;
+      background: var(--gradient-dark);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(247, 37, 133, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(76, 201, 240, 0.1) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      opacity: 0.3;
+      filter: blur(40px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -50px;
+      background: var(--gradient-accent);
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    .btn-outline-light:hover {
+      background: white;
+      color: var(--primary);
+      border-color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Cards */
+    .feature-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      height: 100%;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-card:hover::before {
+      width: 100%;
+      opacity: 0.05;
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: var(--gradient-accent);
+    }
+
+    /* Pricing */
+    .pricing-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      transform: scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-card.featured::before {
+      content: 'POPULAR';
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: var(--gradient-accent);
+      color: white;
+      padding: 0.5rem 2rem;
+      transform: rotate(45deg);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+
+    .pricing-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .pricing-features li i {
+      color: var(--success);
+      margin-right: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 1rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.1;
+      font-family: serif;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      object-fit: cover;
+    }
+
+    /* Newsletter */
+    .newsletter-section {
+      background: var(--gradient-primary);
+      border-radius: var(--radius-lg);
+      padding: 4rem 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23ffffff" fill-opacity="0.03" d="M0,0L1000,100L1000,0Z"/></svg>');
+    }
+
+    /* Contact */
+    .contact-form .form-control {
+      padding: 1rem;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .contact-form .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 1rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Back to top */
+    #backTop {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 100;
+      box-shadow: var(--shadow-lg);
+    }
+
+    #backTop.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #backTop:hover {
+      transform: translateY(-5px);
+      background: var(--gradient-accent);
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.in-view,
+    .reveal-left.in-view,
+    .reveal-right.in-view {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    /* Counter */
+    .counter-item {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .counter-number {
+      font-size: 3rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dark Theme */
+    body.dark {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark h1,
+    body.dark h2,
+    body.dark h3,
+    body.dark h4,
+    body.dark h5,
+    body.dark h6 {
+      color: #ffffff;
+    }
+
+    body.dark .feature-card,
+    body.dark .pricing-card,
+    body.dark .testimonial-card {
+      background: #1e1e1e;
+      border-color: #333;
+    }
+
+    body.dark header {
+      background: rgba(30, 30, 30, 0.95);
+    }
+
+    body.dark .navbar-nav .nav-link {
+      color: #e0e0e0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .pricing-card.featured {
+        transform: none;
+        margin: 1rem 0;
+      }
+      .navbar-nav {
+        padding: 1rem 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .hero {
+        padding: 100px 0 60px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-btns {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-btns .btn {
+        width: 100%;
+      }
+      .feature-card,
+      .pricing-card {
+        margin-bottom: 1.5rem;
+      }
+      .pricing-card.featured::before {
+        font-size: 0.7rem;
+        right: -40px;
+        top: 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      .pricing-price {
+        font-size: 2.5rem;
+      }
+      #backTop {
+        width: 50px;
+        height: 50px;
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .btn-primary,
+      .btn-outline-light {
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    /* Accessibility */
+    .focus-visible:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    /* Loading animation for images */
+    img[data-src] {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    img.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-logo">MODERN</div>
+    <div class="spinner" role="status" aria-label="Loading"></div>
+    <small style="margin-top:20px;color:rgba(255,255,255,0.7)">Loading amazing experience...</small>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">MODERN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-3">
+              <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content reveal-left">
+          <h1>Create Stunning Digital Experiences That Convert</h1>
+          <p>We design and develop beautiful, fast, and responsive websites that help businesses grow and succeed in the digital world.</p>
+          <div class="hero-btns">
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+            <a href="#features" class="btn btn-outline-light">Learn More</a>
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="position-relative">
+            <div class="feature-card mt-5 mt-lg-0">
+              <div class="feature-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h5>Lightning Fast</h5>
+              <p>Optimized for speed with 99% performance score.</p>
+            </div>
+            <div class="feature-card mt-4">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h5>Fully Responsive</h5>
+              <p>Perfect on all devices from mobile to desktop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5 my-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="reveal">Amazing Features</h2>
+        <p class="lead reveal">Everything you need to build an outstanding online presence</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4 reveal">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h5>Modern Design</h5>
+            <p>Clean, modern UI with attention to detail and user experience.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal" style="transition-delay: 0.2s">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h5>High Performance</h5>
+            <p>Optimized code and assets for lightning-fast loading times.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal" style="transition-delay: 0.4s">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h5>Secure & Reliable</h5>
+            <p>Enterprise-grade security with 99.9% uptime guarantee.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal" style="transition-delay: 0.2s">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h5>SEO Optimized</h5>
+            <p>Built with best SEO practices to rank higher in search results.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal" style="transition-delay: 0.4s">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h5>Easy to Customize</h5>
+            <p>Modular components that are easy to modify and extend.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal" style="transition-delay: 0.6s">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h5>24/7 Support</h5>
+            <p>Round-the-clock support to help you whenever you need.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="reveal">Our Services</h2>
+        <p class="lead reveal">Comprehensive digital solutions for your business</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4 reveal-left">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-code"></i>
+            </div>
+            <h5>Web Development</h5>
+            <p>Custom websites and web applications built with modern technologies.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h5>UI/UX Design</h5>
+            <p>Beautiful and intuitive interfaces that enhance user experience.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 reveal-right">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h5>Digital Marketing</h5>
+            <p>Strategic marketing campaigns to boost your online presence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Counter Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-6 col-md-3">
+          <div class="counter-item reveal">
+            <div class="counter-number" data-target="250">0</div>
+            <h6>Projects Completed</h6>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="counter-item reveal" style="transition-delay: 0.2s">
+            <div class="counter-number" data-target="150">0</div>
+            <h6>Happy Clients</h6>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="counter-item reveal" style="transition-delay: 0.4s">
+            <div class="counter-number" data-target="5000">0</div>
+            <h6>Hours of Work</h6>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="counter-item reveal" style="transition-delay: 0.6s">
+            <div class="counter-number" data-target="98">0</div>
+            <h6>Success Rate %</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="reveal">Simple Pricing</h2>
+        <p class="lead reveal">Choose the perfect plan for your needs</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card reveal-left">
+            <h4>Starter</h4>
+            <div class="pricing-price">$29<span style="font-size:1rem">/month</span></div>
+            <p>Perfect for small projects</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> 5 Pages</li>
+              <li><i class="fas fa-check"></i> Basic SEO</li>
+              <li><i class="fas fa-check"></i> Mobile Responsive</li>
+              <li><i class="fas fa-times"></i> E-commerce</li>
+              <li><i class="fas fa-times"></i> Priority Support</li>
+            </ul>
+            <button class="btn btn-primary w-100">Get Started</button>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card featured reveal">
+            <h4>Professional</h4>
+            <div class="pricing-price">$79<span style="font-size:1rem">/month</span></div>
+            <p>Best for growing businesses</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> 15 Pages</li>
+              <li><i class="fas fa-check"></i> Advanced SEO</li>
+              <li><i class="fas fa-check"></i> Mobile Responsive</li>
+              <li><i class="fas fa-check"></i> E-commerce Ready</li>
+              <li><i class="fas fa-check"></i> Priority Support</li>
+            </ul>
+            <button class="btn btn-primary w-100">Get Started</button>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card reveal-right">
+            <h4>Enterprise</h4>
+            <div class="pricing-price">$199<span style="font-size:1rem">/month</span></div>
+            <p>For large organizations</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Unlimited Pages</li>
+              <li><i class="fas fa-check"></i> Premium SEO</li>
+              <li><i class="fas fa-check"></i> Mobile Responsive</li>
+              <li><i class="fas fa-check"></i> Full E-commerce</li>
+              <li><i class="fas fa-check"></i> 24/7 Support</li>
+            </ul>
+            <button class="btn btn-primary w-100">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="reveal">What Our Clients Say</h2>
+        <p class="lead reveal">Trusted by businesses worldwide</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card reveal-left">
+            <p>"Absolutely stunning work! The team delivered exactly what we needed and exceeded our expectations."</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+              <div>
+                <h6 class="mb-0">Sarah Johnson</h6>
+                <small>CEO, TechVision</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card reveal">
+            <p>"The website they built for us increased our conversions by 40%. Highly recommended!"</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Michael Chen">
+              <div>
+                <h6 class="mb-0">Michael Chen</h6>
+                <small>Founder, InnovateCo</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card reveal-right">
+            <p>"Professional, responsive, and incredibly talented. They made the entire process seamless."</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Emma Davis">
+              <div>
+                <h6 class="mb-0">Emma Davis</h6>
+                <small>Marketing Director</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="newsletter-section text-center reveal">
+        <h2 class="text-white">Stay Updated</h2>
+        <p class="text-white mb-4">Subscribe to our newsletter for the latest updates and offers</p>
+        <form class="row g-3 justify-content-center" id="newsletterForm">
+          <div class="col-md-6">
+            <input type="email" class="form-control form-control-lg" placeholder="Your email address" required>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-light btn-lg w-100">Subscribe</button>
+          </div>
+        </form>
+        <div id="newsletterMsg" class="mt-3 text-white"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="reveal">Get In Touch</h2>
+        <p class="lead reveal">Ready to start your project? Contact us today</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="feature-card reveal">
+            <form id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Name</label>
+                  <input type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Subject</label>
+                  <input type="text" class="form-control" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Message</label>
+                  <textarea class="form-control" rows="5" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </div>
+              </div>
+              <div id="contactMsg" class="mt-3"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="footer-logo">MODERN</div>
+          <p>Creating beautiful digital experiences that help businesses thrive in the modern world.</p>
+          <div class="social-links mt-4">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h5>Company</h5>
+          <ul class="list-unstyled">
+            <li><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+            <li><a href="#about" class="text-white-50 text-decoration-none">About</a></li>
+            <li><a href="#services" class="text-white-50 text-decoration-none">Services</a></li>
+            <li><a href="#pricing" class="text-white-50 text-decoration-none">Pricing</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h5>Support</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-4 mb-4">
+          <h5>Contact Info</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Design Street, Creative City</li>
+            <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i> hello@modern.com</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.1)">
+      
+      <div class="text-center pt-3">
+        <p class="mb-0">&copy; <span id="year"></span> Modern. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // DOM Ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preloader
+      window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          setTimeout(() => {
+            preloader.style.display = 'none';
+          }, 500);
+        }
+      });
+
+      // Set current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Theme Toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      function setTheme(theme) {
+        document.body.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
+        themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+
+      // Initialize theme
+      const savedTheme = localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark');
+        setTheme(isDark ? 'light' : 'dark');
+      });
+
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const target = document.querySelector(targetId);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu
+            const navbar = document.querySelector('.navbar-collapse');
+            if (navbar.classList.contains('show')) {
+              new bootstrap.Collapse(navbar).hide();
+            }
+          }
+        });
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all reveal elements
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Counter animation
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target.querySelector('.counter-number');
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+              current += increment;
+              if (current < target) {
+                counter.textContent = Math.floor(current);
+                setTimeout(updateCounter, 16);
+              } else {
+                counter.textContent = target;
+              }
+            };
+            
+            updateCounter();
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.counter-item').forEach(el => {
+        counterObserver.observe(el);
+      });
+
+      // Back to top button
+      const backTop = document.getElementById('backTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backTop.classList.add('show');
+        } else {
+          backTop.classList.remove('show');
+        }
+      });
+
+      backTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Form submissions
+      const contactForm = document.getElementById('contactForm');
+      const newsletterForm = document.getElementById('newsletterForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const msg = document.getElementById('contactMsg');
+          msg.innerHTML = '<div class="alert alert-success">Thank you! Your message has been sent successfully.</div>';
+          contactForm.reset();
+          setTimeout(() => {
+            msg.innerHTML = '';
+          }, 5000);
+        });
+      }
+      
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const msg = document.getElementById('newsletterMsg');
+          msg.innerHTML = '<div class="text-success">Thank you for subscribing!</div>';
+          newsletterForm.reset();
+          setTimeout(() => {
+            msg.innerHTML = '';
+          }, 5000);
+        });
+      }
+
+      // Add focus-visible class for keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-is-tabbing');
+        }
+      });
+
+      document.addEventListener('mousedown', () => {
+        document.body.classList.remove('user-is-tabbing');
+      });
+    });
+  </script>
+</body>
+
+</html>
