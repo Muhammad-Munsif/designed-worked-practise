@@ -1,4 +1,3 @@
-<style>
     :root {
       --primary: #8a2be2;
       --primary-dark: #6a1bb0;
@@ -1185,4 +1184,3 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--primary);
     }
-  </style>
