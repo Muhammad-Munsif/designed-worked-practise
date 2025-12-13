@@ -1,4 +1,4 @@
-  <script>
+  
     // Preloader
     window.addEventListener("load", function () {
       const preloader = document.getElementById("preloader");
@@ -221,4 +221,4 @@
     
     setVH();
     window.addEventListener('resize', setVH);
-  </script>
+  
