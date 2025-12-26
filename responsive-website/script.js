@@ -1,4 +1,4 @@
- <script>
+
     // Enhanced Website Functionality
     document.addEventListener('DOMContentLoaded', function() {
       // Preloader
@@ -413,4 +413,4 @@
       // Calculate read time for hero section
       calculateReadTime();
     });
-  </script>
+  
