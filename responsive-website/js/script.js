@@ -1,4 +1,4 @@
-<script>
+
     // Enhanced Website Functionality
     document.addEventListener("DOMContentLoaded", function () {
       // Preloader
@@ -633,4 +633,4 @@
       // Initialize with correct position
       window.dispatchEvent(new Event('resize'));
     });
-  </script>
+  
